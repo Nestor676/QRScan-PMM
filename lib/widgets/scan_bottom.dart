@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qr_scan/models/scan_model.dart';
+import 'package:qr_scan/providers/db_provider.dart';
+import 'package:qr_scan/providers/scan_list_provider.dart';
 
 class ScanButton extends StatelessWidget {
   const ScanButton({Key? key}) : super(key: key);
@@ -12,6 +16,11 @@ class ScanButton extends StatelessWidget {
       ),
       onPressed: () {
         print('Botó polsat!');
+        String barcodeScanRes = 'http://paucasesnovescifp.cat';
+        
+        final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
+
+        scanListProvider.nouScan(barcodeScanRes);
       },
     );
   }
